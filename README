@@ -1,0 +1,15 @@
+/*
+*创建人    李冲
+*创建时间  2017年8月
+*功能      生成java可以调用的动态库（so文件）     
+*/
+
+安装并配置好NDK之后，进入到该目录，直接ndk-build就会生成动态库文件libpcap.so到libs目录下，选择自己的手机内核型号
+放到Android studio的libs/内核型号（例如libs/x86）目录下，在需要调用动态库的源码位置处
+static {
+        System.loadLibrary("pcap");
+    }
+    PacketInfo pInfo;
+    public native boolean setMonitor();//需要使用的库函数
+    public native boolean startCapture();
+    public native boolean endCapture();
